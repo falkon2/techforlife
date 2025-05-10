@@ -113,6 +113,8 @@ export function SmoothCursor({
 
   // Check for desktop viewport
   useEffect(() => {
+    if (typeof window === 'undefined') return; // Skip on server-side
+    
     const check = () => setShow(window.innerWidth >= 1024);
     check();
     window.addEventListener("resize", check);
@@ -121,7 +123,7 @@ export function SmoothCursor({
 
   useEffect(() => {
     // Only apply cursor effect when show is true (desktop devices)
-    if (!show) return;
+    if (!show || typeof window === 'undefined') return;
     
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now();

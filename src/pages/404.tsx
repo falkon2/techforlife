@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import Head from "next/head";
 import { useRouter } from "next/router";
-// import { CustomCursor404 } from "@/components/ui/custom-cursor-404";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 export default function Custom404() {
   const router = useRouter();

@@ -46,15 +46,7 @@ export default function Redirect() {
           <div className="flex justify-center">
             <div className="w-16 h-16 border-t-4 border-b-4 border-white rounded-full animate-spin"></div>
           </div>
-          <Link href={targetUrl}>
-            <motion.button
-              className="mt-8 px-8 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white rounded-full font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Go now
-            </motion.button>
-          </Link>
+          
         </motion.div>
         
         {/* Background elements */}
@@ -86,10 +78,7 @@ export default function Redirect() {
         </div>
         
         {/* Custom cursor effect using the Product component */}
-        <Product>
-          <div className="rounded-full w-24 h-24 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 blur-[20px] opacity-70"></div>
-          <div className="rounded-full w-8 h-8 bg-white"></div>
-        </Product>
+
       </div>
     </>
   );

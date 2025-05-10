@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import React from "react";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import dynamic from "next/dynamic"; // Import dynamic
 const GeistFont = Geist({ subsets: ["latin"] });
 import { Analytics } from "@vercel/analytics/next"
@@ -9,6 +8,13 @@ const GeistMonoFont = Geist_Mono({
   weight: "400",
   variable: "--font-geist-mono",
 });
+
+// Import components with dynamic import to prevent SSR issues
+const SmoothCursor = dynamic(
+  () => import("@/components/ui/smooth-cursor").then((mod) => mod.SmoothCursor),
+  { ssr: false }
+);
+
 const SmoothScrollHero = dynamic(
   () => import("@/components/ui/smooth-scroll-hero").then((mod) => mod.SmoothScrollHero),
   { ssr: false }

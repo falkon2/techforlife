@@ -1,11 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import Link from "next/link";
 import { FiArrowLeft, FiShoppingCart, FiStar } from "react-icons/fi";
+
+// Import SmoothCursor with dynamic import to prevent SSR issues
+const SmoothCursor = dynamic(
+  () => import("@/components/ui/smooth-cursor").then((mod) => mod.SmoothCursor),
+  { ssr: false }
+);
 
 export default function Shop() {
   const products = [
