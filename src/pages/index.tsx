@@ -3,6 +3,7 @@ import React from "react";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import dynamic from "next/dynamic"; // Import dynamic
 const GeistFont = Geist({ subsets: ["latin"] });
+import { Analytics } from "@vercel/analytics/next"
 const GeistMonoFont = Geist_Mono({
   subsets: ["latin"],
   weight: "400",
@@ -18,6 +19,7 @@ import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-b
 export default function Home() {
   return (
     <main className="">
+      <Analytics />
       <SmoothCursor />
       <SmoothScrollHero />
       <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center py-4">
