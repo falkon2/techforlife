@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Product from "@/components/ui/product";
