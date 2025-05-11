@@ -1,5 +1,11 @@
 "use client";
+import dynamic from "next/dynamic";
 
+// Import LenisProvider with dynamic import to avoid SSR issues
+const LenisProvider = dynamic(
+  () => import("@/components/ui/lenis-provider"),
+  { ssr: false }
+);
 import {
   motion,
   useMotionTemplate,
@@ -9,7 +15,7 @@ import {
 } from "framer-motion";
 import { SiSpacex } from "react-icons/si";
 import { FiArrowRight, FiMapPin, FiX, FiMenu } from "react-icons/fi";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { SparklesPreview } from "../Main";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
@@ -17,35 +23,8 @@ import { WordRotate } from "@/components/magicui/word-rotate";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-
-// Import LenisProvider with dynamic import to avoid SSR issues
-const LenisProvider = dynamic(
-  () => import("@/components/ui/lenis-provider"),
-  { ssr: false }
-);
 
 export const SmoothScrollHero = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Return a simple div during SSR
-  if (!isMounted) {
-    return (
-      <div className="bg-zinc-950">
-        <Nav />
-        <SparklesPreview />
-        <Hero />
-        <AboutUs />
-        <Footer />
-      </div>
-    );
-  }
-
-  // Use LenisProvider only on the client side after mounting
   return (
     <LenisProvider
       options={{
@@ -69,7 +48,7 @@ const Nav = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const navItems = ['Home', 'About', 'Course'];
+  const navItems = ['Home', 'About', 'Course', 'Shop'];
 
   return (
     <>
@@ -128,7 +107,6 @@ const Nav = () => {
       <div className="fixed top-0 left-0 right-0 z-[5000] sm:hidden">
         <div className="relative flex items-center justify-between px-6 py-4 ">
           <img src="/tel.png" alt="TEL Logo" className="h-8 w-auto" />
-          
           <button
             onClick={toggleMenu}
             className="relative w-10 h-10 flex items-center justify-center"
