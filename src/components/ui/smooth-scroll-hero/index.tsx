@@ -70,6 +70,8 @@ const Nav = () => {
   };
 
   const navItems = ['Home', 'About', 'Course'];
+  // Use separate array for mobile to include Shop
+  const mobileNavItems = [...navItems, 'Shop'];
 
   return (
     <>
@@ -163,7 +165,7 @@ const Nav = () => {
               </div>
               
               <div className="flex flex-col items-center justify-center flex-1 space-y-12">
-                {navItems.map((item, idx) => (
+                {mobileNavItems.map((item, idx) => (
                   <motion.a
                     key={`link-mobile-${idx}`}
                     href="#"
